@@ -4,6 +4,7 @@ Cross Reference Donations
 ```
 $ python3 -m venv venv
 $ source venv/bin/activate
+$ pip install -r requirements.txt
 
 $ python3 donations.py -h
 usage: donations.py [-h] [-l LEADNOW] [-d DONATION] [-o OUTFILE]
