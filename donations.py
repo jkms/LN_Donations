@@ -18,8 +18,8 @@ if __name__ == "__main__":
      # Output the number of rows
      print("Total rows: {0}".format(len(donations)))
      
-     # See which headers are available
-     print(list(donations))
+     # change everything to uppercase, and remove all whitespaces.
+     # print(list(donations)) #Display headers
      leadnow['postcode'] = leadnow['postcode'].str.upper()
      leadnow['postcode'] = leadnow['postcode'].str.replace(' ', '')
      leadnow['last_name'] = leadnow['last_name'].str.upper()
@@ -32,8 +32,6 @@ if __name__ == "__main__":
      donations['Contributor first name'] = donations['Contributor first name'].str.replace(' ', '')
      
      
-     #leadnow['postcode'] = map(lambda x: str(x).upper(), leadnow['postcode'])
-     #leadnow['postcode'] = map(lambda x: x.strip(), leadnow['postcode'])
      new_df = pd.merge(leadnow, donations,  how='left', left_on=['last_name','first_name','postcode'], right_on = ['Contributor last name','Contributor first name','Contributor Postal code'])
      print(new_df[list(leadnow) + ['Recipient', 'Contribution Received date', 'Monetary amount']])
      new_df.to_csv(args.outfile, sep='\t')
